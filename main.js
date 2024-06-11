@@ -6,7 +6,7 @@ const db = {
         remove: (items) => {
             items.forEach(item => {
                 const product = db.methods.find(item.id);
-                product.qty = product.qty - item.qty
+                product.qty = product.qty - item.qty;
             });
             console.log(db)
         },
@@ -140,13 +140,13 @@ function renderShopingCart(){
         `;
     });
     const closeButton = `
-        <div class="cart-header>
+        <div class="cart-header">
             <button class="bClose">Close</button>
         </div>
     `;
     const purchaseButton = shoppingCart.items.length > 0? `
         <div class="cart-actions">
-            <button class="bPurchase">Purchase</button>
+            <button id="bPurchase">Purchase</button>
         </div>
     `: "";
     const total = shoppingCart.methods.getTotal();
@@ -164,26 +164,26 @@ function renderShopingCart(){
         closeButton + html.join('') + totalContainer + purchaseButton;
 
         document.querySelectorAll('.addOne').forEach(button =>{
-            button.addEventListener('click', e => {
+            button.addEventListener('click', (e) => {
                 const id = parseInt(button.getAttribute('data-id'));
                 shoppingCart.methods.add(id, 1);
                 renderShopingCart();
             });
         });
         document.querySelectorAll('.removeOne').forEach((button) =>{
-            button.addEventListener('click', e => {
+            button.addEventListener('click', (e) => {
                 const id = parseInt(button.getAttribute('data-id'));
                 shoppingCart.methods.remove(id, 1);
                 renderShopingCart();
             });
         });
-        document.querySelector('.bClose').addEventListener('click', e => {
+        document.querySelector('.bClose').addEventListener('click', (e) => {
             shoppingCartContainer.classList.remove("show");
             shoppingCartContainer.classList.add("hide");
         });
         const bPurchase = document.querySelector('#bPurchase');
         if(bPurchase){
-            bPurchase.addEventListener('click', e => {
+            bPurchase.addEventListener('click', (e) => {
                 shoppingCart.methods.purchase();
                 renderStore();
                 renderShopingCart();
