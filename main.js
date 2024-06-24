@@ -56,11 +56,13 @@ const shoppingCart = {
         },
         remove: (id, qty) => {
             const cartItem = shoppingCart.methods.get(id);
-            if(cartItem.qty - qty > 0){
-                cartItem.qty -= qty ;
-            }else{
-                shoppingCart.items = shoppingCart.items.filter(item => item.id != id);
-            }
+            // if(cartItem.qty - qty > 0){
+            //     cartItem.qty -= qty ;
+            // }else{
+            //     shoppingCart.items = shoppingCart.items.filter(item => item.id != id);
+            // }
+            cartItem.qty - qty > 0 ? cartItem.qty -= qty : shoppingCart.items = shoppingCart.items.filter(item => item.id != id);
+
         },
         count: () => {
             return shoppingCart.items.reduce((acc, item) => acc + item.qty, 0);
