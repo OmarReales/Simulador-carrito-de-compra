@@ -63,6 +63,7 @@ const shoppingCart = {
             //     shoppingCart.items = shoppingCart.items.filter(item => item.id != id);
             // }
             cartItem.qty - qty > 0 ? cartItem.qty -= qty : shoppingCart.items = shoppingCart.items.filter(item => item.id != id);
+            saveLocal();
 
         },
         count: () => {
@@ -163,7 +164,7 @@ function renderShopingCart(){
     const shoppingCartContainer = document.querySelector(
         "#shopping-cart-container"
     );
-    localStorage.getItem('shoppingCart')? shoppingCartContainer.classList.add("show") : shoppingCartContainer.classList.add("hide");
+    //localStorage.getItem('shoppingCart')? shoppingCartContainer.classList.add("show") : shoppingCartContainer.classList.add("hide");
 
     shoppingCartContainer.classList.remove("hide");
     shoppingCartContainer.classList.add("show");
