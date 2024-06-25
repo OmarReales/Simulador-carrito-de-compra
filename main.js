@@ -191,13 +191,18 @@ function renderShopingCart(){
             shoppingCartContainer.classList.add("hide");
         });
         const bPurchase = document.querySelector('#bPurchase');
-        if(bPurchase){
-            bPurchase.addEventListener('click', (e) => {
-                shoppingCart.methods.purchase();
-                renderStore();
-                renderShopingCart();
-            })
-        }
+        // if(bPurchase){
+        //     bPurchase.addEventListener('click', (e) => {
+        //         shoppingCart.methods.purchase();
+        //         renderStore();
+        //         renderShopingCart();
+        //     })
+        // }
+        (bPurchase)? bPurchase.addEventListener('click', (e) => {
+            shoppingCart.methods.purchase();
+            renderStore();
+            renderShopingCart();
+        }) : "";
 }
 
 function numberToCurrency(n){
