@@ -9,6 +9,7 @@ const db = {
                 product.qty = product.qty - item.qty;
             });
             console.log(db)
+            saveLocal();
         },
     },
     items: [
@@ -68,6 +69,7 @@ const shoppingCart = {
         },
         count: () => {
             return shoppingCart.items.reduce((acc, item) => acc + item.qty, 0);
+            saveLocal();
         },
         get: (id) => {
             const index = shoppingCart.items.findIndex(item => item.id == id);
