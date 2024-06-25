@@ -53,6 +53,7 @@ const shoppingCart = {
             }else{
                 shoppingCart.items.push({ id, qty });
             }
+            saveLocal();
         },
         remove: (id, qty) => {
             const cartItem = shoppingCart.methods.get(id);
@@ -86,6 +87,9 @@ const shoppingCart = {
             shoppingCart.items = [];
         },
     }
+}   
+const saveLocal = () => {
+    localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart.items));
 }
 
 renderStore();
