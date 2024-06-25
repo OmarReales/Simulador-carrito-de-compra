@@ -39,7 +39,7 @@ const db = {
     ]
 }
 const shoppingCart = {
-    items:[],
+    items: JSON.parse(localStorage.getItem('shoppingCart')) || [],
     methods: {
         add: (id, qty) => {
             const cartItem = shoppingCart.methods.get(id);
@@ -92,6 +92,8 @@ const saveLocal = () => {
     localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart.items));
 }
 
+JSON.parse(localStorage.getItem('shoppingCart')) //? shoppingCart.items = JSON.parse(localStorage.getItem('shoppingCart')) : shoppingCart.items = [];
+
 renderStore();
 
 function renderStore(){
@@ -116,7 +118,6 @@ function renderStore(){
             const item = db.methods.find(id);
 
             if(item && item.qty -1 > 0){
-                //añadir al carrito
                 shoppingCart.methods.add(id, 1);
                 console.log(shoppingCart);
                 renderShopingCart();
@@ -162,7 +163,8 @@ function renderShopingCart(){
     const shoppingCartContainer = document.querySelector(
         "#shopping-cart-container"
     );
-    
+    localStorage.getItem('shoppingCart')? shoppingCartContainer.classList.add("show") : shoppingCartContainer.classList.add("hide");
+
     shoppingCartContainer.classList.remove("hide");
     shoppingCartContainer.classList.add("show");
 
