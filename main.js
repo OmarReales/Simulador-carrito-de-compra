@@ -86,6 +86,7 @@ const shoppingCart = {
         purchase: () => {
             db.methods.remove(shoppingCart.items);
             shoppingCart.items = [];
+            saveLocal();
         },
     }
 }   
