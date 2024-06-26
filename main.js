@@ -9,7 +9,6 @@ const db = {
                 product.qty = product.qty - item.qty;
             });
             console.log(db)
-            saveLocal();
         },
     },
     items: [
@@ -49,7 +48,8 @@ const shoppingCart = {
                 if(shoppingCart.methods.hasInventory(id, qty + cartItem.qty)){
                     cartItem.qty += qty;
                 }else{
-                    alert('No hay productos suficientes');
+                    //alert('No hay productos suficientes');
+                    Swal.fire("No hay productos suficientes");
                 }
             }else{
                 shoppingCart.items.push({ id, qty });
